@@ -15,6 +15,14 @@ namespace RepositoryLayer
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Client> client { get; set; }
         #endregion
+        public DbSet<Supplier> Suppliers { get; set; }
+        public DbSet<Article> Articles { get; set; }
+        public DbSet<ArticleCategory> ArticleCategories { get; set; }
+        public DbSet<Order> Orders{ get; set; }
+        public DbSet<OrderLine> OrderLines{ get; set; }
+        public DbSet<Input> Inputs{ get; set; }
+        public DbSet<Output> Outputs { get; set; }
+        public DbSet<Reception> Receptions { get; set; }
 
         public BDDContext(DbContextOptions con) : base(con)
         {

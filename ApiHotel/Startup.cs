@@ -34,6 +34,17 @@ namespace ApiHotel
             services.AddScoped<ICategory, CategoryService>();
             services.AddScoped<IReservation, ReservationService>();
             services.AddScoped<IRoom, RoomService>();
+            services.AddScoped<ISupplier, SupplierService>();
+            services.AddScoped<IArticle, ArticleService>();
+            services.AddScoped<IArticleCategory, ArticleCategoryService>();
+            services.AddScoped<IOrder, OrderService>();
+            services.AddScoped<IOrderLine, OrderLineService>();
+            services.AddScoped<IInput, InputService>();
+            services.AddScoped<IOutput, OutputService>();
+            services.AddScoped<IReception, ReceptionService>();
+
+
+
 
         }
 

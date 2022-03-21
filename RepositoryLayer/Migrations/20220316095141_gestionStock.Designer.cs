@@ -11,9 +11,10 @@ using System;
 namespace RepositoryLayer.Migrations
 {
     [DbContext(typeof(BDDContext))]
-    partial class BDDContextModelSnapshot : ModelSnapshot
+    [Migration("20220316095141_gestionStock")]
+    partial class gestionStock
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
