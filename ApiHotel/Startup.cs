@@ -27,7 +27,9 @@ namespace ApiHotel
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             services.AddMvc();
+            
             services.AddDbContext<BDDContext>(con =>
             con.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<IPerson, PersonService>();
@@ -55,6 +57,11 @@ namespace ApiHotel
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseCors(x => x
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials());
 
             app.UseMvc();
         }

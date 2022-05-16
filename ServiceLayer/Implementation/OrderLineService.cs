@@ -1,4 +1,5 @@
 ﻿using DomainLayer.Model;
+using Microsoft.EntityFrameworkCore;
 using RepositoryLayer;
 using ServiceLayer.Interfaces;
 using System;
@@ -32,7 +33,7 @@ namespace ServiceLayer.Implementation
 
         public List<OrderLine> getAllOrderLine()
         {
-            return _dbContext.OrderLines.ToList();
+            return _dbContext.OrderLines.Include(p => p.art).ToList();
         }
 
         public OrderLine getOrderLineById(int id)

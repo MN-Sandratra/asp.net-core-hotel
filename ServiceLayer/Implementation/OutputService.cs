@@ -1,4 +1,5 @@
 ﻿using DomainLayer.Model;
+using Microsoft.EntityFrameworkCore;
 using RepositoryLayer;
 using ServiceLayer.Interfaces;
 using System;
@@ -32,7 +33,7 @@ namespace ServiceLayer.Implementation
 
         public List<Output> getAllOutput()
         {
-            return _dbContext.Outputs.ToList();
+            return _dbContext.Outputs.Include(p => p.art).ToList();
         }
 
         public Output getOutputById(int id)

@@ -1,4 +1,5 @@
 ﻿using DomainLayer.Model;
+using Microsoft.EntityFrameworkCore;
 using RepositoryLayer;
 using ServiceLayer.Interfaces;
 using System;
@@ -33,7 +34,7 @@ namespace ServiceLayer.Implementation
 
         public List<Article> getAllArticle()
         {
-            return _dbContext.Articles.ToList();
+            return _dbContext.Articles.Include(p=>p.artCat).ToList();
         }
 
         public Article getArticleById(int id)

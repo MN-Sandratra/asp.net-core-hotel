@@ -1,4 +1,5 @@
 ﻿using DomainLayer.Model;
+using Microsoft.EntityFrameworkCore;
 using RepositoryLayer;
 using ServiceLayer.Interfaces;
 using System;
@@ -32,7 +33,7 @@ namespace ServiceLayer.Implementation
 
         public List<Reception> getAllReception()
         {
-            return _dbContext.Receptions.ToList();
+            return _dbContext.Receptions.Include(p => p.ord).ToList();
         }
 
         public Reception getReceptionById(int id)

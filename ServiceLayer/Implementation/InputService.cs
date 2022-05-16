@@ -1,4 +1,5 @@
 ﻿using DomainLayer.Model;
+using Microsoft.EntityFrameworkCore;
 using RepositoryLayer;
 using ServiceLayer.Interfaces;
 using System;
@@ -32,7 +33,7 @@ namespace ServiceLayer.Implementation
 
         public List<Input> getAllInput()
         {
-            return _dbContext.Inputs.ToList();
+            return _dbContext.Inputs.Include(p => p.art).ToList();
         }
 
         public Input getInputById(int id)
