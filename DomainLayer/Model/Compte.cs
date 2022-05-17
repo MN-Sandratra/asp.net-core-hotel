@@ -7,10 +7,13 @@ namespace DomainLayer.Model
 {
     public class Compte
     {
-        [Key]
+        public int Id { get; set; }
         public int numeroCompte { get; set; }
         public String intituleCompte { get; set; }
+        public int typecompteId { get; set; }
         public TypeCompte typecompte { get; set; }
+
+        public int classecompteId { get; set; }
         public ClasseCompte classecompte { get; set; }
     }
 }

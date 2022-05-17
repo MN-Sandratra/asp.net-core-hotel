@@ -9,6 +9,6 @@ namespace DomainLayer.Model
     {
         public int Id { get; set; }
         public String libelleEcriture { get; set; }
-        public DateTime dateEcriture { get; set; }
+        public String dateEcriture { get; set; }
     }
 }

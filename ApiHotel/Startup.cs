@@ -23,10 +23,23 @@ namespace ApiHotel
         }
 
         public IConfiguration Configuration { get; }
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(MyAllowSpecificOrigins,
+                builder =>
+                {
+                    builder.WithOrigins("http://localhost:58379",
+                                        "http://localhost:4200"
+                                        )
+                                        .AllowAnyHeader()
+                                        .AllowAnyMethod();
+                });
+            });
             services.AddMvc();
             services.AddDbContext<BDDContext>(con =>
             con.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
@@ -35,6 +48,11 @@ namespace ApiHotel
             services.AddScoped<IReservation, ReservationService>();
             services.AddScoped<IRoom, RoomService>();
 
+            services.AddScoped<ICompte, CompteService>();
+            services.AddScoped<ITypeCompte, TypeCompteService>();
+            services.AddScoped<IClasseCompte, ClasseCompteService>();
+            services.AddScoped<IEcriture, EcritureService>();
+            services.AddScoped<IMouvement, MouvementService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,7 +62,7 @@ namespace ApiHotel
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseCors(MyAllowSpecificOrigins);
             app.UseMvc();
         }
     }
